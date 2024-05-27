@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* Bài 1: Viết chương trình cho người dùng nhập vào 3 số, 
+        viết hàm kiểm tra để tìm ra số bé nhất và in ra số đó */
+      function minArray(arr) {
+        let min = arr[0];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < min) {
+            min = arr[i];
+          }
+        }
+        return min;
+      }
+      let so1 = parseFloat(prompt("Nhập số thứ nhất:"));
+      let so2 = parseFloat(prompt("Nhập số thứ hai:"));
+      let so3 = parseFloat(prompt("Nhập số thứ ba:"));
+      let soBeNhat = minArray([so1, so2, so3]);
+      console.log("Số bé nhất là :" + soBeNhat);
+      /*Bài 2: Viết hàm kiểm tra xem số người dùng nhập vào có phải là số nguyên tố hay không?
+(số nguyên tố là số nguyên dương chỉ có 2 ước là 1 và chính nó). */
+      // Math.sqrt(so): là cách căn bậc 2 của nó.
+      function soNguyenTo(so) {
+        if (so <= 1) {
+          return false;
+        }
+
+        for (let j = 2; j <= Math.sqrt(so); j++) {
+          if (so % j === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      let so = parseInt(prompt("Nhập gía trị nguyên dương :"));
+      if (soNguyenTo(so)) {
+        console.log(so + ":là số nguyên tố");
+      } else {
+        console.log(so + ":không phải là số nguyên tố");
+      }
+      /*Bài 3: Viết hàm tính giai thừa của một số nguyên b
+      ất kỳ được đưa vào. Thực thi hàm vừa khởi tạo*/
+      //   Number.isInteger(so):kiểm tra giá trị đó có phải số nguyên không?
+      //     console.log(Number.isInteger(5)); // true
+      // console.log(Number.isInteger(5.5)); // false
+      // console.log(Number.isInteger("5")); // false
+      // console.log(Number.isInteger(null)); // false
+      // console.log(Number.isInteger(undefined)); // false
+      // console.log(Number.isInteger(NaN)); // false
+      function tinhGiaiThua(số) {
+        if (số < 0 || !Number.isInteger(số)) {
+          return NaN;
+        }
+        if (số === 0 || số === 1) {
+          return 1;
+        }
+        let giaiThua = 1;
+        for (let i = 2; i <= số; i++) {
+          giaiThua *= i;
+        }
+        return giaiThua;
+      }
+      let số = parseInt(prompt("Nhập một số nguyên: "));
+      let ketQua = tinhGiaiThua(số);
+      console.log("Giai thừa của số " + số + "là:" + ketQua);
+      /* Bài 4: Cho mảng sau:
+let arr=[1,2,3,4,5,6,7,8,9,10]
+Viết hàm trả về tất cả các cặp số có tổng bằng 10*/
+      function capSoTongBang10(arr1) {
+        let ketQua1 = {};
+        for (let k = 0; k < arr1.length; k++) {
+          for (let l = k + 1; l < arr1.length; l++) {
+            if (arr1[k] + arr1[l] === 10) {
+              ketQua1.push([arr1[k]], arr1[l]);
+            }
+          }
+        }
+        return ketQua1;
+      }
+      let arr1 =[1,2,3,4,5,6,7,8,9,10];
+      let cacCapSo = capSoTongBang10(arr1);
+      console.log("Các cặp số có tổng là 10 :" + cacCapSo);
+      /* Bài 5: Cho người dùng nhập vào chuỗi kí tự. Viết hàm kiểm tra xem tần suất xuất hiện của mỗi ký tự và in ra chúng
+Input: “Hello World”
+ */
+    </script>
+  </body>
+</html>
